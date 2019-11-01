@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>How many fingers?</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #divFinished {
+            display: none;
+        }
+
+        #divComputer {
+            float: left;
+        }
+
+        #divTalk {
+            font-family: 'Source Code Pro', monospace;
+            position: relative;
+            font-size: large;
+            top: -380px;
+            left: 160px;
+            width: 260px;
+            height: 140px;
+            overflow: hidden;
+        }
+
+        #divGuess, #divFinished {
+            position: relative;
+            top: -250px;
+            left: 250px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var intFingers;
+        document.addEventListener("DOMContentLoaded", reset);
+
+        var arrPreGuessTaunts = ["Are you sure about that?", "Is that really your choice?", "I'd think carefully about that.", "Really? You're planning on guessing that?"];
+        var arrPostGuessTaunts = ["Wrong! <br/><br/>Haha! You'll never guess it!", "Guess again! <br/><br/>That was a rubbish guess!", "Wrong! <br/><br/>Wait til I tell my friends how rubbish you are at this.", "Nowhere near! <br/><br/>You do know how to count?"];
+        var iLastPreTaunt = 0;
+        var iLastPostTaunt = 0;
+
+        function reset() {
+            var oSelect = document.getElementById("selFingers");
+
+            document.getElementById("divFinished").style.display = "none";
+            document.getElementById("divGuess").style.display = "block";
+            document.getElementById("divTalk").innerHTML = "How many fingers am I holding up?"
+
+            intFingers = Math.floor(Math.random() * 5) + 1;
+            document.getElementById("selFingers").selectedIndex = 0;
+
+            for (var i = 0; i < oSelect.options.length; i++)
+                oSelect.options[i].disabled = false;
+
+            document.getElementById("selFingers").addEventListener("change", taunt);
+        }
+
+        function taunt() {
+            var iNewTaunt = Math.floor(Math.random() * 4);
+
+            while (iNewTaunt == iLastPreTaunt)
+                iNewTaunt = Math.floor(Math.random() * 4)
+
+            document.getElementById("divTalk").innerHTML = arrPreGuessTaunts[iNewTaunt];
+            iLastPreTaunt = iNewTaunt;
+        }
+
+        function checkAnswer() {
+            var oSelect = document.getElementById("selFingers");
+            var intGuess = oSelect.options[oSelect.selectedIndex].value;
+            var iNewTaunt = Math.floor(Math.random() * 4);
+
+            if (intGuess == intFingers) {
+                document.getElementById("divFinished").style.display = "block";
+                document.getElementById("divGuess").style.display = "none";
+                document.getElementById("divTalk").innerHTML = "Well done, you got it!";
+            }
+            else {
+                oSelect.options[oSelect.selectedIndex].disabled = true;
+                oSelect.selectedIndex = 0;
+
+                while (iNewTaunt == iLastPostTaunt)
+                    iNewTaunt = Math.floor(Math.random() * 4)
+
+                document.getElementById("divTalk").innerHTML = arrPostGuessTaunts[iNewTaunt];
+                iLastPostTaunt = iNewTaunt;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>How many fingers?</h1>
+    <div id="divComputer">
+        <img src="images/computer.gif" />
+        <div id="divTalk">How many fingers am I holding up?</div>
+
+        <div id="divGuess">
+            <select id="selFingers">
+                <option></option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
+            </select>
+            <input type="button" onclick="checkAnswer()" value="Guess!" />
+        </div>
+
+        <div id="divFinished">
+            <p><input type="button" onclick="reset()" value="Try again" /></p>
+        </div>
+    </div>
+</body>
+</html>

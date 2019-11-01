@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Technology - BBC News</title>
+    <link rel="stylesheet" href="css/bbcfonts.css" />
+    <link rel="stylesheet" href="css/underline.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div id="top-menu">
+        <img id="logo" src="images/bbc-logo.jpg"/>
+        <a href="#" id="login" class="hvr-underline-reveal first">
+            <img src="images/logged-in.jpg" />
+            Andy
+        </a>
+        <a href="#" id="notify" class="hvr-underline-reveal">
+            <img src="images/bell.jpg" />
+        </a>
+        <a href="#" id="home" class="hvr-underline-reveal">Home</a>
+        <a href="#" id="news" class="hvr-underline-reveal">News</a>
+        <a href="#" id="sport" class="hvr-underline-reveal">Sport</a>
+        <a href="#" id="weather" class="hvr-underline-reveal">Weather</a>
+        <a href="#" id="iplayer" class="hvr-underline-reveal">iPlayer</a>
+        <a href="#" id="sounds" class="hvr-underline-reveal">Sounds</a>
+        <a href="#" id="cbbc" class="hvr-underline-reveal">CBBC</a>
+        <a href="#" id="more" style="flex-grow:100;" class="hvr-underline-reveal">More<img src="images/black-arrow.jpg" style="float:right" /></a>
+        <div class="last"><form method="get"><input type="text" id="search" value="Search"/><button class="search-button">Search the BBC</button></form></div>
+    </div>
+    <div id="header">
+        <p><svg xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" viewBox="3367.9 3.96 61 15.33" width="120px" enable-background="new 3367.9 3.96 61 15.33" preserveAspectRatio="xMinYMin meet"><g fill="#fff"><path d="M3379.73 4.15h2.03v14.97h-1.84l-10.01-11.53v11.53h-2.01V4.15h1.74l10.09 11.62V4.15M3385.62 4.15h8.49v1.91h-6.34v4.56h6.13v1.92h-6.13v4.65h6.54v1.9h-8.69V4.15M3416.97 4.15h2.14l-6.05 15.03h-.47l-4.89-12.17-4.95 12.17h-.46l-6.03-15.03h2.16l4.12 10.32 4.16-10.32h2.02l4.17 10.32 4.08-10.32M3424.92 12.85l-1.63-.99c-1.02-.62-1.75-1.24-2.18-1.84-.43-.6-.65-1.3-.65-2.08 0-1.18.41-2.14 1.23-2.87.82-.74 1.88-1.1 3.19-1.1 1.25 0 2.4.35 3.44 1.05v2.43c-1.08-1.04-2.24-1.56-3.48-1.56-.7 0-1.27.16-1.73.49-.45.32-.67.74-.67 1.24 0 .45.17.87.5 1.26.33.39.86.8 1.6 1.23l1.64.97c1.82 1.09 2.74 2.48 2.74 4.16 0 1.2-.4 2.17-1.21 2.92-.8.75-1.85 1.12-3.13 1.12-1.48 0-2.82-.45-4.04-1.36V15.2c1.16 1.47 2.5 2.2 4.02 2.2.67 0 1.23-.19 1.68-.56.45-.37.67-.84.67-1.4-.02-.91-.68-1.78-1.99-2.59"></path><image src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAAgCAMAAADqkpxHAAAAG1BMVEX////35+fvxsbnra3ejIzWa2vOUlLGMTG9GBibW0q6AAAACXRSTlP//////////wBTT3gSAAACWUlEQVR4nLyX65aFIAiFE/Hy/k88pagbpDOetWaNv6yQD2FLddV/HiVnmV33CI4F3/dJ5vEygx8XzySbVdHzBoaF2vpALPcn4xt0fbxEh2LjWZ4E3JHcjTcXJ+i875A9Zzcv8JitESo6+4gOMHjuQa+TdKp7T4TXekrEkRR6Y1v0LzVZFOsrjjzk9aikAOjwWqFX9Ca0URhlO40YgypME32RZh+gN6E9bpKJZ/l5ZgUedDTv7BO0EVrz0uIB4+cytVmw4m/ovkrJ4wRthNavdDxLZHVTZUf3E4fJO0FroTVKMfHE5ba1G8i4oIUNQR2hm9CSoTBuGyrfQguAEHQtQbOP0Epog4LCV2khc/IGuq9YQZ2hobBrAQhtiWzubjEmukuNhuHHRqq3zWaWZ1GzNhb2OEvgKuERO0SnYQaUJTQQWX/CwmaDln1/hZ6FRcoUGlRdRpaNR4OWN4+PxtcH+CLwMygjnq3Jw8ajQfcjRh7al9kUmqaI0JTIFrxvnDUajtgpWuSlW1WLJxddG7PxUGztBvsY3QzZUFokVmSGHQ1ajnc+R7e82f6cmjgu9arCQbJGZyX1bJyjx2cPSrnIvY8K2dDyFjtHZ48i8WAmcD5Cs1rgy8T8Gb31ZohHmYFFcRMO36yH6OSg6/YWvu+sy+jJDNmH6LJR6vhkMcGMN0d7mDz0OPWIxmYWzALypOyXnygyiXMXLTJ47eEmBdlLCtlOxtpHfUF3mZyib8z2C/F4sPvB/57yilYthYMZFp08D+T8TfVkU6+5t+hvht/ISpmt5wcAAP//AwCBpFE5ZTGfKQAAAABJRU5ErkJggg=="></image></g></svg></p>
+        <ul>
+            <li class="hvr-underline-reveal"><a id="navhome" href="#" class="first">Home</a></li>
+            <li class="hvr-underline-reveal"><a id="uk" href="#">UK</a></li>
+            <li class="hvr-underline-reveal"><a id="world" href="#">World</a></li>
+            <li class="hvr-underline-reveal"><a id="business" href="#">Business</a></li>
+            <li class="hvr-underline-reveal"><a id="politics" href="#">Politics</a></li>
+            <li class="hvr-underline-reveal"><a id="tech" href="#">Tech</a></li>
+            <li class="hvr-underline-reveal"><a id="science" href="#">Science</a></li>
+            <li class="hvr-underline-reveal"><a id="health" href="#">Health</a></li>
+            <li class="hvr-underline-reveal"><a id="family" href="#">Family & Education</a></li>
+            <li class="hvr-underline-reveal"><a id="entertain" href="#">Entertainment & Arts</a></li>
+            <li class="hvr-underline-reveal"><a id="stories" href="#">Stories</a></li>
+            <li class="hvr-underline-reveal"><a id="video" href="#">Video & Audio</a></li>
+            <li class="hvr-underline-reveal"><a id="pictures" href="#">In Pictures</a></li>
+            <li class="hvr-underline-reveal"><a id="newsbeat" href="#">Newsbeat</a></li>
+            <li class="hvr-background-change"><a id="more" href="#">More</a><img src="images/white-arrow.gif" /></li>
+        </ul>
+    </div>
+    <span id="main-heading">
+        Technology
+    </span>
+    <div id="content">
+        <div id="article1" class="main-article">
+            <div class="main-img-div"><img src="images/web-developer-course.jpg" alt="Web Developer Course" /></div>
+            <div class="flex-article">
+                <div class="heading"><a href="#">Complete Web Developer Course Wins!</a></div>
+                <div class="summary">
+                    231 Thousand students learn the awesome skills of Web Developing from Rob Percival's Complete Web Developer Course 2.0
+                    <ul>
+                        <li><a href="https://www.udemy.com/course/the-complete-web-developer-course-2/" target="_blank">Find our more on the Udemy website</a></li>
+                        <li><a href="https://www.udemy.com/course/the-complete-web-developer-course-2/#reviews" target="_blank">Read reviews about the course</a></li>
+                    </ul>
+                </div>
+                <div class="art-details"><span class="time"><img src="images/clock.gif" />1d</span>&nbsp;|&nbsp;<a href="#">Technology</a></div>
+            </div>
+        </div>
+        <div id="article2" class="sub-article">
+            <div class="sub-img-div"><img src="images/flex-box.jpg" /></div>
+            <div class="subheading"><a href="#">Flex box instructions help developers</a></div>
+            <div class="summary">Instructions on how to use Flex Boxes really help developers make websites that flow onto different screen sizes.</div>
+            <div class="art-details"><span class="time"><img src="images/clock.gif" />1d</span>&nbsp;|&nbsp;<a href="#">Technology</a></div>
+        </div>
+        <div id="article3" class="sub-article">
+            <div class="sub-img-div"><img src="images/udemy.jpg" /></div>
+            <div class="subheading"><a href="#">Udemy offer loads of courses to students</a></div>
+            <div class="summary">Udemy are offering loads of fantastic courses to anyone at great prices!</div>
+            <div class="art-details"><span class="time"><img src="images/clock.gif" />2d</span>&nbsp;|&nbsp;<a href="#">Technology</a></div>
+        </div>
+        <div id="article4" class="sub-article">
+            <div class="sub-img-div"><img src="images/stackoverflow.png" /></div>
+            <div class="subheading"><a href="#">Get help and fantastic code examples @ Stack Overflow</a></div>
+            <div class="summary">Go to the place where developers help each other out. Post your questions and let the pros help.</div>
+            <div class="art-details"><span class="time"><img src="images/clock.gif" />2d</span>&nbsp;|&nbsp;<a href="#">Technology</a></div>
+        </div>
+        <div id="article5" class="sub-article">
+            <div class="sub-img-div"><img src="images/70-480.png" /></div>
+            <div class="subheading"><a href="#">Go and pass the Microsoft 70-480 Exam</a></div>
+            <div class="summary">Pass and industry class exam from Microsoft and work towards your Microsoft Certifications.</div>
+            <div class="art-details"><span class="time"><img src="images/clock.gif" />2d</span>&nbsp;|&nbsp;<a href="#">Technology</a></div>
+        </div>
+        <div id="article6" class="sub-article">
+            <div class="sub-img-div"><img src="images/break-time.jpg" /></div>
+            <div class="subheading"><a href="#">Don't forget to take regular rest breaks</a></div>
+            <div class="summary">While working hard at programming is important, remember to take regular rest breaks to let your eyes recover.</div>
+            <div class="art-details"><span class="time"><img src="images/clock.gif" />3d</span>&nbsp;|&nbsp;<a href="#">Technology</a></div>
+        </div>
+        <div id="article7" class="sub-article">
+            <div class="sub-img-div"><img src="images/github.jpg" /></div>
+            <div class="subheading"><a href="#">Track versions and check out source code with GitHub</a></div>
+            <div class="summary">GitHub allows you to check code in and out and roll back to previous versions. Great for budding developers.</div>
+            <div class="art-details"><span class="time"><img src="images/clock.gif" />4d</span>&nbsp;|&nbsp;<a href="#">Technology</a></div>
+        </div>
+    </div>
+</body>
+</html>

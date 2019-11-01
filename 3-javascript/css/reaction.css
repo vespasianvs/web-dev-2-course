@@ -1,0 +1,50 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2.4vw;
+}
+
+#divPlayArea {
+    border: 3px outset black;
+    margin: 0px 5px;
+    width: auto;
+    position:relative;
+}
+
+#btnStart {
+    position: absolute;
+    top: 7vh;
+    width: 15vw;
+    right: 1vw;
+    padding: 3px;
+    z-index: 100;
+}
+
+#divInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 0px 5px;
+    width: auto;
+    border-bottom: 3px outset black;
+    border-left: 3px outset black;
+}
+
+#divInfo div {
+    border-right: 3px outset black;
+    padding: 0px 5px;
+    font-size: 2.8vw;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.square {
+    position: absolute;
+}
+

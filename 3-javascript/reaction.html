@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reaction.css" />
+    <script type="text/javascript" src="script/reaction.js" language="javascript"></script>
+    <title>Reaction Game</title>
+</head>
+<body>
+    <div id="divHeader">
+        <h1>Test your perception and reactions</h1>
+        <p><strong>Instructions:</strong></p>
+        <p>Click on the circles (only the circles!) as quickly as you can. How many can you get in a minute?</p>
+        <p>There is a penalty for clicking on something that isn't a circle or for missing a circle!</p>
+        <input type="button" id="btnStart" value="Start" onclick="clkStart()" />
+    </div>
+    <div id="divPlayArea"></div>
+    <div id="divInfo">
+        <div>Circles clicked: <span id="spClkCircle">0</span></div>
+        <div>Non-circles clicked: <span id="spClkNonCircle">0</span></div>
+        <div>Average reaction: <span id="spAvReact">0</span></div>
+        <div>Time Left: <span id="spTimeLeft">60</span></div>
+    </div>
+</body>
+</html>

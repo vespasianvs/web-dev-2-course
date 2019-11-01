@@ -1,0 +1,69 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Red+Hat+Display|Titillium+Web&display=swap');
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Red Hat Display', sans-serif;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 30px 1fr 30px;
+    overflow: hidden;
+}
+
+#header {
+    position: relative;
+    width: 100%;
+    height: 29px;
+    text-align: center;
+    font-size: 0.7em;
+    background-color: #EDEDED;
+    border-bottom: 1px solid #E4E4E4;
+}
+
+.controlgroup {
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#header .selected {
+    background: #EBF2FE;
+}
+
+#container {
+    width: 100vw;
+}
+
+#container * {
+    font-family: 'Titillium Web', sans-serif;
+    float: left;
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+}
+
+#container iframe {
+    border: 0px;
+    border-left: 1px solid #E4E4E4;
+}
+
+#container textarea {
+    border: 0px;
+    border-left: 1px solid #E4E4E4;
+    width: 100%;
+    height: 100%;
+}
+
+#footer {
+    background-color: #EEEEEE;
+    width: 100%;
+    height: 29px;
+    border-top: 1px solid #E4E4E4;
+}
+
+.ui-resizable-e {
+    right: 0px!important;
+}

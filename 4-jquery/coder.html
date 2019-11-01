@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/coder.css" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="script/coder.js"></script>
+    <title>Code Player</title>
+</head>
+<body>
+    <div id="header">
+        <div class="controlgroup widget">
+            <button id="btnHtml">HTML</button>
+            <button id="btnCss">CSS</button>
+            <button id="btnJS">Javascript</button>
+            <button id="btnOutput">Output</button>
+        </div>
+    </div>
+    <div id="container">
+        <textarea id="txtHtml" onkeyup="updateOutput()">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;
+        &lt;title&gt;Coder&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+        </textarea>
+        <textarea id="txtCss" onkeyup="updateOutput()"></textarea>
+        <textarea id="txtJS" onkeyup="updateOutput()"></textarea>
+        <iframe id="ifOutput"></iframe>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>

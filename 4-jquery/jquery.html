@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/excite-bike/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            var icons = {
+              header: "ui-icon-circle-arrow-e",
+              activeHeader: "ui-icon-circle-arrow-s"
+            };
+
+            $("#accordion").accordion({ icons: icons, collapsible: true });
+            $("ol").sortable();
+        });
+    </script>    
+    <title>JQuery</title>
+    <style type="text/css">
+       
+    </style>
+</head>
+<body>
+    <div id="accordion">
+        <h3>Strengths</h3>
+        <div>
+            <ol>
+                <li>Friendly</li>
+                <li>Caring</li>
+                <li>Organised</li>
+                <li>Thoughtful</li>
+                <li>Determined</li>
+                <li>Resilient</li>
+            </ol>
+        </div>
+        <h3>Weaknesses</h3>
+        <div>
+            <ol>
+                <li>Take on too much</li>
+                <li>Don't always understand others emotions</li>
+                <li>Can get emotional</li>
+                <li>Miss or misunderstand jokes/humour</li>
+            </ol>
+        </div>
+        <h3>Interests</h3>
+        <div>
+            <ol>
+                <li>Running</li>
+                <li>Rock Climbing</li>
+                <li>Gym</li>
+                <li>Travelling</li>
+                <li>Allotment</li>
+                <li>Guitar</li>
+                <li>Martial Arts</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
