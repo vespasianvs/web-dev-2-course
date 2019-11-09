@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+    <!-- Imported scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <title>goPlasticFree</title>
+
+    <style type="text/css">
+        .jumbotron {
+            background-image: url('https://images.unsplash.com/photo-1558640476-437a2b9438a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80');
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .stroked-text-white {
+            color: white;
+            text-shadow:
+            -1px -1px 0 #000,  
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+                1px 1px 0 #000;
+        }
+
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        .card img {
+            object-fit: cover;
+            height: 200px;
+        }
+
+        article {
+            padding: 60px 0px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-dark navbar-expand-lg bg-primary fixed-top">
+    <a class="navbar-brand text-light" href="#"><i class="fas fa-recycle"></i> goPlasticFree</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a href="#Home" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#About" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+                <a href="#Download" class="nav-link">Download</a>
+            </li>
+        </ul>
+</nav>  
+<article id="Home" class="jumbotron jumbotron-fluid">
+    <div class="container-fluid vertical-center text-center">
+        <h1 class="display-4 stroked-text-white">go Plastic Free!</h1>
+        <p class="lead stroked-text-white">Download our new app to learn all about how to make <em>your</em> life free of single-use plastic.</p>
+        <hr class="my-4">
+        <p class="stroked-text-white">Small changes do make a difference. Be part of that change!</p>
+        <a class="btn btn-primary btn-lg" href="#About" role="button">Learn more</a>
+        <hr class="my-4" />
+        <p class="stroked-text-white">Sign up to get our <u>free</u> newsletter now!</p>
+        <form class="needs-validation" novalidate>
+            <div class="form-group form-row mx-auto">
+                <div class="col-sm-2 col-xl-3"></div>
+                <div class="col-sm-5 col-lg-6 col-xl-4">
+                    <label class="sr-only" for="inlineFormInputGroup">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend d-none d-md-block">
+                            <div class="input-group-text">@</div>
+                        </div>
+                        <input type="email" class="form-control" id="inlineFormInputGroup" placeholder="Email">
+                    </div>
+                </div>
+                <div class="col-sm-3 col-lg-2 col-xl-2">
+                    <input type="submit" class="form-control btn btn-primary" id="btnSubmit" value="Sign Up!" />
+                </div>
+                <div class="col-sm-2 col-xl-3"></div>
+            </div>
+        </form>
+    </div>
+</article>
+<article id="About" class="container bg-light">
+    <div class="row">
+        <h2 class="text-primary">How can goPlasticFree help you?</h2>
+        <div class="card-deck">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1535928069047-389a87df1b02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80" class="card-img-top" alt="Woman in Shopping Cart">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-shopping-bag"></i> Easy Shopping Tips</h5>
+                    <p class="card-text">Learn the best ways of avoiding plastic in your weekly shop.</p>
+                    <a href="#" class="btn btn-primary">More Info</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=995&q=80" class="card-img-top" alt="Money tipped out of a jar">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-money-bill-wave"></i> Save Money</h5>
+                    <p class="card-text">Buying with less packaging can save you money - after all you have to pay for the packaging. Learn ways to shop with none or little packaging.</p>
+                    <a href="#" class="btn btn-primary">More Info</a>
+                </div>
+            </div>
+            <div class="w-100 d-none d-sm-block d-lg-none px-5">&nbsp;</div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1529702859952-6ade6266947c?ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80" class="card-img-top" alt="Sign: Plastic Bottles take 500 years to decompose">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-info"></i> Plastic Facts</h5>
+                    <p class="card-text">Learn the facts about different plastic products and how long they take to decompose.</p>
+                    <a href="#" class="btn btn-primary">More Info</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1562591970-254bc62245c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img-top" alt="Plastic sorted into colours">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-cut"></i> Plastic Crafts</h5>
+                    <p class="card-text">Do some fun craft activities to reuse the plastics you have ended up with. Fun for you and for kids!</p>
+                    <a href="#" class="btn btn-primary">More Info</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<article id="Download" class="container w-100 bg-primary">
+    <div class="row">
+        <div class="col-12 text-light text-center">
+            Download the goPlasticFree app <em>Now!</em>
+        </div>
+    </div>
+    <div class="row position-relative">
+        <div class="col-12 text-center d-inline-block h-100">
+            <a href="#Download"><img class="" width="100" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Apple App Store" /></a>
+            <a href="#Download"><img class="" width="125" src="https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png" alt="Apple App Store" /></a>
+        </div>
+    </div>
+</article>
+<footer class="container text-center bg-info text-light">
+    <small>
+        Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc.
+    </small></br>
+    <small>Google Play and the Google Play logo are trademarks of Google LLC.</small>
+</footer>
+</body>
+</html>
