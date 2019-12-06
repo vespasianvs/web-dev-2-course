@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -8,11 +8,69 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-rfs/bootstrap-rfs.css">
+    
     <!-- Imported scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-breakpoints/dist/bs-breakpoints.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            bsBreakpoints.init()
+        });
+
+        $(function () {
+            $('#infoShopping, #infoFacts, #infoMoney, #infoCrafts, #infoAnswers').on('shown.bs.collapse', function (event) {
+
+                var offsetTop = 0;
+                var elem = event.currentTarget;
+
+                do {
+                  if ( !isNaN( elem.offsetTop ) )
+                  {
+                      offsetTop += elem.offsetTop;
+                  }
+                } while( elem = elem.offsetParent );
+
+                $('html, body').animate({
+                    scrollTop: (offsetTop-60)
+                }, 500);
+
+                event.stopPropagation();
+            })
+        });
+
+        function clickBack(elem) {
+            var divTarget = $(elem).data('target');
+            var sHome = $(divTarget).data('home');
+                
+                $('html, body').animate({
+                    scrollTop: ($(sHome).offset().top-60)
+                }, 500);
+        }
+
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+
+        window.addEventListener("hashchange", function () { scrollBy(0, -60) });
+    </script>
 
     <title>goPlasticFree</title>
 
@@ -20,16 +78,12 @@
         .jumbotron {
             background-image: url('https://images.unsplash.com/photo-1558640476-437a2b9438a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80');
             background-size: cover;
-            height: 100vh;
+            background-position: center;
+            margin-top: 54px;
         }
 
-        .stroked-text-white {
-            color: white;
-            text-shadow:
-            -1px -1px 0 #000,  
-            1px -1px 0 #000,
-            -1px 1px 0 #000,
-                1px 1px 0 #000;
+        .stroked-text {
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
 
         .vertical-center {
@@ -46,13 +100,13 @@
         }
 
         article {
-            padding: 60px 0px;
+            padding: 54px 0px;
         }
     </style>
 </head>
 <body>
 <nav class="navbar navbar-dark navbar-expand-lg bg-primary fixed-top">
-    <a class="navbar-brand text-light" href="#"><i class="fas fa-recycle"></i> goPlasticFree</a>
+    <a class="navbar-brand text-light stroked-text" href="#"><i class="fas fa-recycle"></i> <span class="text-success">go</span><span class="text-danger">Plastic</span>Free</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -69,16 +123,17 @@
                 <a href="#Download" class="nav-link">Download</a>
             </li>
         </ul>
+	</div>
 </nav>  
 <article id="Home" class="jumbotron jumbotron-fluid">
-    <div class="container-fluid vertical-center text-center">
-        <h1 class="display-4 stroked-text-white">go Plastic Free!</h1>
-        <p class="lead stroked-text-white">Download our new app to learn all about how to make <em>your</em> life free of single-use plastic.</p>
+    <div class="container-fluid text-center">
+        <h1 class="display-4 stroked-text text-white"><i class="fas fa-recycle"></i> <span class="text-success">go</span><span class="text-danger">Plastic</span>Free</h1>
+        <p class="lead stroked-text text-white">Download our new app to learn all about how to make <em>your</em> life free of single-use plastic.</p>
         <hr class="my-4">
-        <p class="stroked-text-white">Small changes do make a difference. Be part of that change!</p>
+        <p class="stroked-text text-white">Small changes do make a difference. Be part of that change!</p>
         <a class="btn btn-primary btn-lg" href="#About" role="button">Learn more</a>
         <hr class="my-4" />
-        <p class="stroked-text-white">Sign up to get our <u>free</u> newsletter now!</p>
+        <p class="stroked-text text-white">Sign up to get our <u>free</u> newsletter now!</p>
         <form class="needs-validation" novalidate>
             <div class="form-group form-row mx-auto">
                 <div class="col-sm-2 col-xl-3"></div>
@@ -88,11 +143,14 @@
                         <div class="input-group-prepend d-none d-md-block">
                             <div class="input-group-text">@</div>
                         </div>
-                        <input type="email" class="form-control" id="inlineFormInputGroup" placeholder="Email">
+                        <input type="email" class="form-control" id="inlineFormInputGroup" placeholder="Email" required>
+                        <div class="invalid-tooltip">
+                            Please enter a valid email address
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-3 col-lg-2 col-xl-2">
-                    <input type="submit" class="form-control btn btn-primary" id="btnSubmit" value="Sign Up!" />
+                    <button type="submit" class="btn btn-primary" id="btnSubmit">Sign Up</button>
                 </div>
                 <div class="col-sm-2 col-xl-3"></div>
             </div>
@@ -100,44 +158,102 @@
     </div>
 </article>
 <article id="About" class="container bg-light">
-    <div class="row">
+    <section class="row">
         <h2 class="text-primary">How can goPlasticFree help you?</h2>
         <div class="card-deck">
-            <div class="card">
+            <div id="Shopping" class="card">
                 <img src="https://images.unsplash.com/photo-1535928069047-389a87df1b02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80" class="card-img-top" alt="Woman in Shopping Cart">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-shopping-bag"></i> Easy Shopping Tips</h5>
                     <p class="card-text">Learn the best ways of avoiding plastic in your weekly shop.</p>
-                    <a href="#" class="btn btn-primary">More Info</a>
+                    <a class="btn btn-primary collapsed" data-toggle="collapse" href="#infoShopping" role="button" aria-expanded="false" aria-controls="infoShopping">More Info</a>
                 </div>
             </div>
-            <div class="card">
+            <div id="Money" class="card">
                 <img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=995&q=80" class="card-img-top" alt="Money tipped out of a jar">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-money-bill-wave"></i> Save Money</h5>
                     <p class="card-text">Buying with less packaging can save you money - after all you have to pay for the packaging. Learn ways to shop with none or little packaging.</p>
-                    <a href="#" class="btn btn-primary">More Info</a>
+                    <a class="btn btn-primary collapsed" data-toggle="collapse" href="#infoMoney" role="button" aria-expanded="false" aria-controls="infoMoney">More Info</a>
                 </div>
             </div>
             <div class="w-100 d-none d-sm-block d-lg-none px-5">&nbsp;</div>
-            <div class="card">
+            <div id="Facts" class="card">
                 <img src="https://images.unsplash.com/photo-1529702859952-6ade6266947c?ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80" class="card-img-top" alt="Sign: Plastic Bottles take 500 years to decompose">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-info"></i> Plastic Facts</h5>
                     <p class="card-text">Learn the facts about different plastic products and how long they take to decompose.</p>
-                    <a href="#" class="btn btn-primary">More Info</a>
+                    <a class="btn btn-primary collapsed" data-toggle="collapse" href="#infoFacts" role="button" aria-expanded="false" aria-controls="infoFacts">More Info</a>
                 </div>
             </div>
-            <div class="card">
+            <div id="Crafts" class="card">
                 <img src="https://images.unsplash.com/photo-1562591970-254bc62245c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img-top" alt="Plastic sorted into colours">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-cut"></i> Plastic Crafts</h5>
                     <p class="card-text">Do some fun craft activities to reuse the plastics you have ended up with. Fun for you and for kids!</p>
-                    <a href="#" class="btn btn-primary">More Info</a>
+                    <a class="btn btn-primary collapsed" data-toggle="collapse" href="#infoCrafts" role="button" aria-expanded="false" aria-controls="infoCrafts">More Info</a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <section class="row pt-3">
+            <div class="collapse w-100" id="infoShopping" data-parent="#About" data-home="#Shopping">
+                <div class="card card-body">
+                    <p>The goPlasticFree App provides you with invaluable shopping advice, such as:</p>
+                    <ul>
+                        <li>Stores local to you that specialise in plastic-free products.</li>
+                        <li>Which products on the high street minimise their plastic packaging.</li>
+                        <li>Tips on shopping local and taking your own containers.</li>
+                        <li>Advice on how to approach retailers about reducing their plastic use.</li>
+                    </ul>
+                    <div class="row justify-content-center">
+                        <button type="button" data-target="#infoShopping"  onclick="clickBack(this);" data-toggle="collapse" aria-expanded="true" aria-controls="infoShopping" class="btn btn-primary shown col-sm-12 col-md-6 col-lg-4">Back</button>
+                    </div>
+                </div>
+            </div>
+            <div class="collapse w-100" id="infoMoney" data-parent="#About" data-home="#Money">
+                <div class="card card-body">
+                    <p>So you've bought yourself something wonderful, you rush home and unwrap it. After battling with the plastic wrap, cable ties, labels and everything else you get your shiny new thing out...and then bin all of the packaging. Sound familiar?</p>
+                    <p>A question: all of that packaging that you just binned: who paid for it? You did of course! Learn how shopping without packaging can actually save you money. You're not paying for unwanted packaging, which makes it cheaper.</p>
+                    <div class="row justify-content-center">
+                        <button type="button" data-target="#infoMoney"  onclick="clickBack(this);" class="btn btn-primary shown col-sm-12 col-md-6 col-lg-4" data-toggle="collapse" aria-expanded="true" aria-controls="infoMoney">Back</button>
+                    </div>
+                </div>
+            </div>
+            <div class="collapse w-100" id="infoFacts" data-parent="#About" data-home="#Facts">
+                <div class="card card-body">
+                    <p>Well, you already know about how long it takes a plastic bottle to decompose. Here are some more questions about plastic bottles:</p>
+                    <ol>
+                        <li>How many barrels of oil per year are estimated to be used for producing plastic bottles?</li>
+                        <li>How many plastic bottles are estimated to be used per day just in the UK?</li>
+                        <li>How many of those plastic bottles are <u>not</u> recycled?</li>
+                        <li>How many pieces of plastic debris are estimated to be in the world's oceans now?</li>
+                    </ol>
+                    <p>Get answers to lots of questions like these in the goPlasticFree App</p>
+                    <div class="row justify-content-center">
+                        <button type="button" data-target="#infoFacts"  onclick="clickBack(this);" class="btn btn-primary shown col-sm-12 col-md-6 col-lg-4 m-2" data-toggle="collapse" aria-expanded="true" aria-controls="infoFacts">Back</button>
+                        <a class="btn btn-success collapsed col-sm-12 col-md-6 col-lg-4 m-2" data-toggle="collapse" href="#infoAnswers" role="button" aria-expanded="false" aria-controls="infoAnswers">Answers</a>
+                    </div>
+                    <div class="collapse" id="infoAnswers" data-home="#infoFacts">
+                        <ol class="pt-4">
+                            <li>1,600,000</li>
+                            <li>35,800,000</li>
+                            <li>16,000,000</li>
+                            <li>5,250,000,000,0000</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="collapse" id="infoCrafts" data-parent="#About" data-home="#Crafts">
+                <div class="card card-body">
+                    <p>Get all of your plastic-waste craft ideas from the goPlasticFree App. It's a reality that it's impossible to totally avoid plastic packaging. Having paid for it, why not use it?</p>
+                    <p>The app will give you step-by-step instructions with pictures so you can create Magnificent Monsters, Perfect Pen Holders, Potty Plant Pots, Herby Hydroponics and much more!</p>
+                    <div class="row justify-content-center">
+                        <button type="button" data-target="#infoCrafts"  onclick="clickBack(this);" class="btn btn-primary shown col-sm-12 col-md-6 col-lg-4" data-toggle="collapse" aria-expanded="true" aria-controls="infoCrafts">Back</button>
+                    </div>
+                </div>
+            </div>
+    </section>
 </article>
 <article id="Download" class="container w-100 bg-primary">
     <div class="row">
