@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-rfs/bootstrap-rfs.css">
+    
+    <!-- Imported scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+	
+	<title>Weather Forecast</title>
+	
+	<style type="text/css">
+		.stroked-text {
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+		
+		#cover{
+			color: rgb(255, 255, 255);
+			position: relative;
+			min-height: 350px;
+			background: url('images/default.jpg') no-repeat scroll 0px 100% / cover transparent;
+		}
+	</style>
+	<script type="text/javascript">
+	var arrCityCon = [];
+	var arrCity = [];
+	var arrImages = ["freeze", "freezing", "dry", "snow", "rain", "foggy"];
+		
+	function onInputChange(elem) {
+		arrCityCon.length = 0;
+		arrCity.length = 0;
+		
+		$("#txtCity").typeahead({
+			minLength: 3,
+			highlight: true,
+			source: function(query, process) {
+				$.get({
+					url: 'http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=l1JpVtgZWHv2grlO2E8eReN0MrqS92ac&q='+query,
+					dataType: 'JSON',
+					success: function(data) {
+						$.each(data, (i, obj) => {
+							if (obj.Country.ID=="US") {
+								arrCity.push(obj.LocalizedName + ", " + obj.AdministrativeArea.ID + ", " + obj.Country.LocalizedName);
+								arrCityCon.push([obj.Key, obj.LocalizedName + ", " + obj.AdministrativeArea.ID + ", " + obj.Country.LocalizedName])
+							}
+							else {
+								arrCity.push(obj.LocalizedName + ", " + obj.Country.LocalizedName);
+								arrCityCon.push([obj.Key, obj.LocalizedName + ", " + obj.Country.LocalizedName]);
+							}
+						});
+						$("#txtCity").focus();
+						return process(arrCity);
+					}
+				  }); 
+			}
+		});
+	}
+	
+	function getData(e) {
+		e.preventDefault();
+		var strCity = $('#txtCity').val();
+		var found = arrCityCon.find(element => { 
+			return element[1] == strCity;
+		})
+		
+		if (found==undefined) {
+			$("#divResult").addClass("alert alert-danger");
+			$("#divResult").removeClass("d-none alert-success");
+			$("#hResCity").html("<h6>Invalid City - try one of the suggestions</h6>");
+			$("#smDate").html("");
+			$("#divResSummary").text("");
+			$("#divTempHigh").html("");
+			$("#divTempLow").html("");			
+		}
+		else {
+			$.get({
+				url: 'http://dataservice.accuweather.com//forecasts/v1/daily/1day/'+found[0]+'?apikey=l1JpVtgZWHv2grlO2E8eReN0MrqS92ac&language=en-gb&details=false&metric=true',
+				dataType: 'JSON',
+			  }).done(function (data) {
+					$("#divResult").addClass("alert alert-success");
+					$("#divResult").removeClass("d-none alert-danger");
+				  
+					var forDate = new Date(data.Headline.EffectiveDate)
+				  
+					$("#hResCity").html("Weather for "+strCity);
+					$("#smDate").html(forDate.toString());
+					$("#divResSummary").text(data.Headline.Text);
+					$("#divTempHigh").html(data.DailyForecasts[0].Temperature.Maximum.Value+"&deg;C");
+					$("#divTempLow").html(data.DailyForecasts[0].Temperature.Minimum.Value+"&deg;C");
+					
+					var imgIndex = arrImages.find(element => { 
+						return data.Headline.Category.includes(element);;
+					})
+					
+					if (imgIndex==undefined) $("#cover").css("background-image", "url('images/default.jpg')");
+					else $("#cover").css("background-image", "url('images/"+imgIndex+".jpg')");
+					
+			  }).fail(function (data) {
+					$("#divResult").addClass("alert alert-danger");
+					$("#divResult").removeClass("d-none alert-success");
+					$("#hResCity").html("<h6>Failed to get weather data</h6>");	
+					$("#smDate").html("");
+					$("#divResSummary").text("");
+					$("#divTempHigh").html("");
+					$("#divTempLow").html("");					
+			  });
+		}
+		$("#txtCity").val("");
+		return false;
+	}
+	</script>
+	
+	<?php
+	
+	?>
+	
+</head>
+<body>
+<div id="cover">	
+	<div class="container vh-100 mx-auto">
+		<div class="row align-items-center h-100">
+			<div class="col-10 mx-auto">
+				<div class="row justify-content-center text-light stroked-text">
+					<h1>What's The Weather?</h1>
+				</div>
+				<div class="row justify-content-center">
+					<form class="container-fluid" onsubmit="return getData(event)" autocomplete="off">
+						<input autocomplete="false" name="hidden" type="text" style="display:none;">
+						<div class="row justify-content-center text-light stroked-text">
+							<label for="txtCity">Enter the name of a city</label>
+						</div>
+						<div class="row">
+							<input type="text" id="txtCity" name="city" class="form-control" oninput="onInputChange(this)" placeholder="Enter a city name" required />
+						</div>
+						<div class="row justify-content-center pt-3 pb-5">
+							<button class="btn btn-primary" type="submit">Check the weather!</button>
+						</div>
+					</form>
+				</div>
+				<div id="divResult" class="container-fluid d-none">
+					<div id="divResHeader" class="container-fluid">
+						<h3 id="hResCity" class='row'></h3>
+						<small id="smDate" class='text-muted row'></small>
+					</div>
+					<div id="divResDetail" class="container-fluid m-0 p-0">
+						<div class="row m-0 p-0">
+							<div id="divResSummary" class="col-sm-9 col-md-10 col-xl-11 m-0 p-0"></div>
+							<div id="divTemps" class="col-sm-3 col-md-2 col-xl-1">
+								<div class="row">
+									<div class="col-5"><i class="fas fa-temperature-high"></i></div>
+									<div class="col-7" id="divTempHigh"></div>
+								</div>
+								<div class="row">
+									<div class="col-5"><i class="fas fa-temperature-low"></i></div>
+									<div class="col-7" id="divTempLow"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="container-fluid vw-100" style="position:fixed;bottom:0px;left:0px;text-align:center">
+		<a href="https://www.accuweather.com/" target="_blank"><img src="images/accuweather.png" style="height:5vh"/></a>
+	</footer>
+</div>
+</body>
