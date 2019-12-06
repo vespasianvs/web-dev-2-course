@@ -1,0 +1,78 @@
+textarea {
+	background-color: white!important;
+	box-sizing: border-box;
+}
+
+.input-border {
+	border: 1px solid #AAA;
+	border-bottom: 1px solid #AAA!important;
+}
+
+
+ul.colour-picker li {
+	position: relative;
+	display: block;
+	float: left;
+	height: 54px;
+	width: 25%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+ul.colour-picker li[data-colour="teal"] {
+	background: #2B9;
+}
+ul.colour-picker li[data-colour="green"] {
+	background: #3C7;
+}
+ul.colour-picker li[data-colour="yellow"] {
+	background: #EC1;
+}
+ul.colour-picker li[data-colour="orange"] {
+	background: #E82;
+}
+ul.colour-picker li[data-colour="red"] {
+	background: #E54;
+}
+ul.colour-picker li[data-colour="blue"] {
+	background: #39D;
+}
+ul.colour-picker li[data-colour="dark-blue"] {
+	background: #345;
+}
+ul.colour-picker li[data-colour="purple"] {
+	background: #8e00aa;
+}
+ul.colour-picker li.active:before {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.1);
+	content: "";
+}
+
+.purple {
+	background: #8e00aa;
+}
+
+.app-content .app-button.purple {
+    background-color: #8e00aa;
+    color: #f3f4f5
+}
+
+@-webkit-keyframes pulse {
+	0% {
+		background-color: #CCC;
+	}
+	25% {
+		background-color: #EEE;
+	}
+	50% {
+		background-color: #CCC;
+	}
+	75% {
+		background-color: #EEE;
+	}
+	100% {
+		background-color: #CCC;
+	}
+}

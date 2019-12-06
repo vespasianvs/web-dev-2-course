@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My App</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+	<link rel="stylesheet" href="appjs/app.min.css">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+	<div class="app-page" data-page="home">
+		<div class="app-topbar">
+			<div class="app-title">MeMail Client</div>
+			<div class="app-button right" data-target="settings"><i class="fas fa-cog"></i></div>
+		</div>
+		<div class="app-content">
+			<div class="app-section">
+				<ul class="app-list" id="contacts">
+					<label>Send to someone in your address book</label>
+				</ul>
+			</div>
+			<div class="app-button colour-button" data-target="send_email">New Recipient</div>
+		</div>
+	</div>
+
+	<div class="app-page" data-page="send_email">
+		<div class="app-topbar">
+			<div class="app-button left" data-back data-autotitle></div>
+			<div class="app-title">Send Email</div>
+		</div>
+		<div class="app-content">
+			<div class="app-section" id="divResponse" style="display:none"></div>
+			<form id="frmEmail">
+				<input class="app-input" id="txtFrom" name="from" type="email" placeholder="From:" required>
+				<input class="app-input" id="txtTo" name="to" type="email" placeholder="To:" required>
+				<input class="app-input" id="txtSubject" name="subject" type="text" placeholder="Subject" required>
+				<textarea class="app-input" id="txtBody" name="body" placeholder="Message"></textarea>
+				<div class="app-button colour-button" id="btnSend">Send</div>
+			</form>
+		</div>
+	</div>
+	
+	<div class="app-page" data-page="settings">
+		<div class="app-topbar">
+			<div class="app-button left" data-back data-autotitle></div>
+			<div class="app-title">Settings</div>
+		</div>
+		<div class="app-content">
+			<div class="app-section">
+				<p>Choose the default colour scheme for the app</p>
+
+				<ul class="colour-picker">
+					<li data-colour="teal"></li>
+					<li data-colour="green"></li>
+					<li data-colour="yellow"></li>
+					<li data-colour="orange"></li>
+					<li data-colour="red"></li>
+					<li data-colour="blue"></li>
+					<li data-colour="dark-blue"></li>
+					<li data-colour="purple"></li>
+					<div class="clear"></div>
+				</ul>
+			</div>
+			<div class="app-section">
+				<p>Set the default 'From:' email address</p>
+				<input class="app-input input-border" id="txtDefaultFrom">
+			</div>
+		</div>
+	</div>
+</body>
+  
+	<script src="appjs/zepto.js"></script>
+	<script src="appjs/app.min.js"></script>
+	<script src="js/scripts.js"></script>
+</html>
