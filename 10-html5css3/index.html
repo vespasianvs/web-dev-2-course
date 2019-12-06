@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+	
+	<title>HTML5 Canvas Element</title>
+	
+	<style type="text/css">
+		canvas {
+			position:absolute;
+			top: 0px;
+			left: 0px;
+		}
+		
+		#digitalClock {
+			position: relative; 
+			top: 600px; 
+			left: 600px; 
+			border: 5px solid black; 
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="unionFlag" width="600" height="400"></canvas>
+	<div id="divClock" style="position:relative; top:0px; left: 600px;">
+		<canvas id="clock" width="600" height="600"></canvas>
+		<canvas id="minuteHand" width="600" height="600"></canvas>
+		<canvas id="hourHand" width="600" height="600"></canvas>
+		<canvas id="secondHand" width="600" height="600"></canvas>
+	</div>
+	<canvas id="digitalClock" width="600" height="100"></canvas>
+</body>
+<script type="text/javascript">
+
+function drawDigitalClock() {
+	var canvas = document.getElementById("digitalClock");
+	var context = canvas.getContext("2d");
+	var time = new Date();
+	var currentHours = ("0" + time.getHours()).slice(-2);
+	var currentMinutes = ("0" + time.getMinutes()).slice(-2);
+	var currentSeconds = ("0" + time.getSeconds()).slice(-2);
+	var timeString = currentHours+":"+currentMinutes+"."+currentSeconds;
+	
+	context.beginPath();
+	context.clearRect(0,0,canvas.width, canvas.height);
+	context.translate(300, 50);
+	context.font = "40pt 'Source Code Pro'";
+	context.fillStyle = "black";
+	context.textAlign="center";
+	context.textBaseline="middle";
+	context.fillText(timeString, 0, 0);	
+	context.translate(-300, -50);
+}
+
+function drawClock() {
+	var canvas = document.getElementById("clock");
+	var context = canvas.getContext("2d");
+	
+	context.lineWidth=5;
+	context.strokeStyle = "#000000";
+	context.arc(300, 300, 250, 0, 2*Math.PI);
+	context.stroke();
+	
+	context.beginPath();
+	context.translate(300, 300);
+	context.font = "40pt 'Libre Baskerville'";
+	context.textAlign="center";
+	context.fillText("XII", 0, -190);
+
+	context.rotate(Math.PI/6);
+	context.fillText("I", 0, -190);
+	
+	context.rotate(Math.PI/6);
+	context.fillText("II", 0, -190);
+	
+	context.rotate(Math.PI/6);
+	context.fillText("III", 0, -190);
+	
+	context.rotate(Math.PI/6);
+	context.fillText("IV", 0, -190);
+	
+	context.rotate(Math.PI/6);
+	context.fillText("V", 0, -190);
+	
+	context.rotate(Math.PI/6);
+	context.fillText("VI", 0, -190);
+	
+	context.rotate(Math.PI/6);
+	context.fillText("VII", 0, -190);
+	
+	context.rotate(Math.PI/6);
+	context.fillText("VIII", 0, -190);
+	
+	context.rotate(Math.PI/6);
+	context.fillText("IX", 0, -190);
+	
+	context.rotate(Math.PI/6);
+	context.fillText("X", 0, -190);
+	
+	context.rotate(Math.PI/6);
+	context.fillText("XI", 0, -190);
+	
+	context.rotate(Math.PI/6);
+	drawTickMarks(canvas);
+	context.translate(-300, -300);
+}
+
+function drawTickMarks(canvas) {
+	var context = canvas.getContext("2d");
+	
+	context.lineWidth = 4;
+	context.strokeStyle = "#000000";
+	context.moveTo(0, -250);
+	context.lineTo(0, -230);
+	context.rotate((Math.PI/180)*(360/60));
+	
+	for (var i=1; i<60; i++) {
+		if (i%5 == 0) {
+			context.lineWidth = 4;
+			context.moveTo(0, -250);
+			context.lineTo(0, -230);
+		}
+		else {
+			context.lineWidth = 2;
+			context.moveTo(0, -250);
+			context.lineTo(0, -240);
+		}
+		context.rotate((Math.PI/180)*(360/60));
+	}
+	context.stroke();
+}
+
+function drawSecondHand() {
+	var secondHand = document.getElementById("secondHand");
+	var context = secondHand.getContext("2d");
+	
+	context.beginPath();
+	context.lineWidth = 2;
+	context.strokeStyle = "#000000"
+	context.moveTo(0, 0);
+	context.lineTo(0, -230);
+	context.stroke();
+}
+
+function drawHourHand() {
+	var hourHand = document.getElementById("hourHand");
+	var context = hourHand.getContext("2d");
+	
+	context.beginPath();
+	context.lineWidth = 4;
+	context.strokeStyle = "#000000"
+	context.moveTo(0, 0);
+	context.lineTo(0, -150);
+	context.stroke();
+		
+	context.beginPath();
+	context.arc(0, -150, 16, 0, 2*Math.PI);
+	context.fillStyle = "#000000";
+	context.fill();
+	
+	context.beginPath();
+	context.moveTo(-14, -158);
+	context.lineTo(0, -190);
+	context.lineTo(14, -158);
+	context.lineTo(-14, -158);
+	context.closePath();
+	context.fill();	
+}
+
+function drawMinuteHand() {
+	var minuteHand = document.getElementById("minuteHand");
+	var context = minuteHand.getContext("2d");
+	
+	context.beginPath();
+	context.lineWidth = 4;
+	context.strokeStyle = "#000000"
+	context.moveTo(0, 40);
+	context.lineTo(0, -190);
+	context.stroke();
+	
+	context.beginPath();
+	context.arc(0, 60, 20, Math.PI, 0);
+	context.stroke();
+	
+	context.beginPath();
+	context.arc(0, -190, 16, 0, 2*Math.PI);
+	context.fillStyle = "#000000";
+	context.fill();
+	
+	context.beginPath();
+	context.moveTo(-14, -198);
+	context.lineTo(0, -230);
+	context.lineTo(14, -198);
+	context.lineTo(-14, -198);
+	context.closePath();
+	context.fill();
+}
+
+function startSecondHand() {
+	var secondHand=document.getElementById("secondHand");
+	var context=secondHand.getContext("2d");
+	var time = new Date();
+	
+	context.clearRect(0,0,secondHand.width, secondHand.height);
+	context.translate(300,300);
+	context.rotate((time.getSeconds()*6)*(Math.PI/180));
+	drawSecondHand();
+	context.translate(-300,-300);
+}
+
+function startMinuteHand() {
+	var minuteHand=document.getElementById("minuteHand");
+	var context=minuteHand.getContext("2d");
+	var time = new Date();
+	
+	context.clearRect(0,0,minuteHand.width, minuteHand.height);
+	context.translate(300,300);
+	context.rotate(((time.getMinutes()*60+time.getSeconds())*0.1)*(Math.PI/180));
+	drawMinuteHand();
+	context.translate(-300,-300);
+}
+
+function startHourHand() {
+	var hourHand=document.getElementById("hourHand");
+	var context=hourHand.getContext("2d");
+	var time = new Date();
+	
+	context.clearRect(0,0,hourHand.width, hourHand.height);
+	context.translate(300,300);
+	context.rotate(((time.getHours()*3600+time.getMinutes()*60+time.getSeconds())*(360/43200))*(Math.PI/180));
+	drawHourHand();
+	context.translate(-300,-300);
+}
+
+function drawFlag() {
+	var myCanvas = document.getElementById("unionFlag");
+	var context = myCanvas.getContext("2d");
+	
+	context.fillStyle="#0400ff";
+	context.fillRect(0,0,600,400);
+	
+	context.beginPath();
+	context.strokeStyle="#ffffff";
+	context.lineWidth=70;
+	
+	context.moveTo(0,-2)
+	context.lineTo(600,402);	
+	context.moveTo(605,0)
+	context.lineTo(-5,400);
+	context.stroke();
+	
+	context.beginPath();
+	context.strokeStyle="#ff0000";
+	context.lineWidth=25;
+	
+	context.moveTo(-23,0)
+	context.lineTo(273,200);
+	context.moveTo(0,415);
+	context.lineTo(300,217);
+	context.moveTo(600, -15);
+	context.lineTo(300,183);
+	context.moveTo(623, 400);
+	context.lineTo(327,200);
+	context.stroke();
+	
+	context.beginPath();
+	context.strokeStyle="#ffffff";
+	context.lineWidth=133;
+	context.moveTo(0, 200);
+	context.lineTo(600, 200);
+	context.moveTo(300, 0);
+	context.lineTo(300, 400);
+	context.stroke();
+	
+	context.strokeStyle="#ff0000";
+	context.lineWidth=80;
+	context.moveTo(0, 200);
+	context.lineTo(600, 200);
+	context.moveTo(300, 0);
+	context.lineTo(300, 400);
+	
+	context.stroke();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+	var flag = document.getElementById('unionFlag');
+	//flag.style.marginLeft = -(flag.width/2)+'px';
+	//flag.style.marginTop  = -(flag.height/2)+'px';
+	drawFlag();
+	var timer = waveFlag( flag, 30, 15, 200, 200 );
+	
+	drawClock();
+	startSecondHand();
+	startHourHand();
+	startMinuteHand();
+	
+	var clockTimer = window.setInterval(() => {
+		var hand=document.getElementById("secondHand");
+		var context=hand.getContext("2d");
+		context.clearRect(0,0,hand.width, hand.height);
+		context.translate(300,300);
+		context.rotate(6*(Math.PI/180));
+		drawSecondHand();
+		context.translate(-300,-300);
+		
+		hand=document.getElementById("minuteHand");
+		context=hand.getContext("2d");
+		context.clearRect(0,0,hand.width, hand.height);
+		context.translate(300,300);
+		context.rotate(0.1*(Math.PI/180));
+		drawMinuteHand();
+		context.translate(-300,-300);
+		
+		hand=document.getElementById("hourHand");
+		context=hand.getContext("2d");
+		context.clearRect(0,0,hand.width, hand.height);
+		context.translate(300,300);
+		context.rotate((360/43200)*(Math.PI/180));
+		drawHourHand();
+		context.translate(-300,-300);
+		drawDigitalClock();
+	},1000); 
+	
+	
+}, false);
+	
+function waveFlag( canvas, wavelength, amplitude, period, shading ){
+	var fps = 30;
+	var ctx = canvas.getContext('2d');
+	var   w = canvas.width, h = canvas.height;
+	var  od = ctx.getImageData(0,0,w,h).data;
+	// var ct = 0, st=new Date;
+	return setInterval(function(){
+		var id = ctx.getImageData(0,0,w,h);
+		var  d = id.data;
+		var now = (new Date)/period;
+		for (var y=0;y<h;++y){
+			var lastO=0,shade=0;
+			for (var x=0;x<w;++x){
+				var px  = (y*w + x)*4;
+				var o   = Math.sin(x/wavelength-now)*amplitude*x/w;
+				var opx = ((y+o<<0)*w + x)*4;
+				shade   = (o-lastO)*shading;
+				d[px  ] = od[opx  ]+shade;
+				d[px+1] = od[opx+1]+shade;
+				d[px+2] = od[opx+2]+shade;
+				d[px+3] = od[opx+3];
+				lastO = o;
+			}
+		}
+		ctx.putImageData(id,0,0);		
+		// if ((++ct)%100 == 0) console.log( 1000 * ct / (new Date - st));
+	},1000/fps);
+}
+</script>
+</html>
