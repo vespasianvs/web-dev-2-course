@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Calligraffitti|Kalam&display=swap');
+
+body {
+	height: 100vh;
+	font-family: 'Kalam', cursive;
+	background-color: rgb(40,40,40);
+}
+
+html {
+	font-size: 0.6em;
+}
+
+@media (min-width: 576px) { 
+	html {
+		font-size: 0.8em;
+	}
+}
+
+@media (min-width: 768px) { 
+	html {
+		font-size: 0.9em;
+	}
+}
+
+@media (min-width: 992px) { 
+	html {
+		font-size: 1em;
+	}
+}
+
+
+h1 {
+	font-family: 'Calligraffitti', cursive;
+	font-weight: 800;
+	text-align:center;
+	font-size: 2.5em;
+}
+
+#bgImage{
+	color: rgb(255, 255, 255);
+	position: relative;
+	min-height: 350px;
+	height: 100vh;
+	background: url('../images/secret-bg.jpg') no-repeat scroll 0px 100% / cover transparent;
+}
+
+#frmLogin, #frmSignUp {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: rgba(40,40,40,0.7);
+	padding: 15px;
+}
+
+header {
+	height: 50px;
+	line-height: 50px;
+}
+
+textarea {
+	display: block;
+	box-sizing: border-box;
+	min-height: calc(100% - 60px);
+	min-height: calc(max-content-60px);
+	width: 100%;
+	resize: none;
+	overflow: hidden;
+}
+
+#divSaved {
+	display:inline-block;
+	position: absolute;
+	right: 20px;
+	bottom: 0px;
+	z-index: 100;
+}
+
+footer {
+	background-color: rgba(40,40,40,0.7);
+}
+
