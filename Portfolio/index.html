@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-rfs/bootstrap-rfs.css">
+	<link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Imported scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-breakpoints/dist/bs-breakpoints.min.js"></script>
+	<script type="text/javascript">
+	$(function () {
+			'use strict';
+			
+            window.addEventListener("hashchange", function() { 
+				scrollBy(0, -56);
+			});
+			
+			window.addEventListener('load', function() {
+			// Fetch all the forms we want to apply custom Bootstrap validation styles to
+			var forms = document.getElementsByClassName('needs-validation');
+			// Loop over them and prevent submission
+			var validation = Array.prototype.filter.call(forms, function(form) {
+			  form.addEventListener('submit', function(event) {
+				if (form.checkValidity() === true) {
+				  	$.post("sendEmail.php", $("#frmContact").serialize(), data => {
+						if (JSON.parse(data).success) {
+							$("#toastStatus .toast-body").html("Email sent successfully");
+							$("#toastStatus").toast('show');
+							
+						}
+						else {
+							$("#toastAlert .toast-body").html("Failed to send email, error message: "+JSON.parse(data).message);
+							$("#toastAlert").toast('show');
+						}
+					});
+				}
+				form.classList.add('was-validated');
+				event.preventDefault();
+				event.stopPropagation();
+			  }, false);
+			});
+		  }, false);
+        });
+	</script>
+	
+	<title>Andrew Cork - Web Developer Portfolio</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top w-100">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#Home">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#LearningJourney">My Learning Journey</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#DemoProjects">Demo Projects</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#Contact">Contact Me</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<article id="Home" class="jumbotron jumbotron-fluid text-center">
+		<div class="container-fluid vertical-center w-100">
+			<h1 class="display-4 text-light text-stroked-dark">Hi, I'm Andrew Cork</h1>
+			<p class="lead text-light text-stroked-dark">I'm a Web Developer looking to get back into the IT industry after 14 years away.</p>
+			<hr class="my-4">
+			<p class="text-light text-stroked-dark">This portfolio shows that I've not really been away. My skills are up-to-date and relevant including HTML5, CSS3, Javascript, jQuery and Bootstrap.</p>
+			<p class="lead">
+				<a class="btn btn-primary btn-lg" id="btnLJ" href="#LearningJourney" role="button">Learn more</a>
+				<a class="btn btn-primary btn-lg" href="#Contact" role="button">Contact Me</a>
+			</p>
+		</div>
+	</article>
+	<article id="LearningJourney" class="container">
+		<h2>My Learning Journey</h2>
+		<p>Since deciding to move back into IT, an industry that I love and have missed for many years, it has been a challenge to find out what skills are needed
+			and where my skills need updating. After speaking to several recruitment agents, I decided to retrain as a Web Developer. This was the role that I had 
+			before I left IT, so it made sense to mave back to it.</p>
+		<p>Since starting my training, I have completed certifications with <a href="https://www.youracclaim.com/users/andrew-cork/badges" target="_blank">Microsoft</a> and 
+		<a href="https://www.freecodecamp.org/vespasianvs" target="_blank">FreeCodeCamp</a> and have completed the 
+		'<a href="https://www.udemy.com/course/the-complete-web-developer-course-2/" target="_blank">Complete Web Developer Course 2.0</a>' on Udemy. I am currently planning 
+		to take my Microsoft Certification in HTML5, CSS3 and Javascript (70-480) shortly with the aim eventually of achieving my MCSD: App Builder.
+		</p>
+		<p>On my journey, I have had the opportunity to work on a variety of 'demo' projects, some of which you will see below.</p>
+	</article>
+	<article id="DemoProjects" class="container">
+		<h2>Demo Projects</h2>
+        <div class="card-deck">
+            <section id="Circles" class="card bg-dark">
+                <img src="images/circles.jpg" class="card-img-top" alt="Circles Reaction Game">
+				<div class="card-header">Circles Reaction Game</div>
+                <div class="card-img-overlay">
+                    <p class="card-text">I learnt how to use JavaScript event handlers and intervals to make a fun circles reaction game</p>
+					<a class="btn btn-primary" href="/3-javascript/circles.html" role="button">View</a>
+                </div>
+				<footer class="card-footer">
+					<small class="tag text-muted">#HTML5</small><small class="tag text-muted">#CSS3</small><small class="tag text-muted">#JavaScript</small>
+				</footer>
+            </section>
+            <section id="CodePlayer" class="card bg-dark">
+                <img src="images/coder.jpg" class="card-img-top" alt="Code Player Environment">
+                <div class="card-header">Code Player Environment</div>
+				<div class="card-img-overlay">
+                    <p class="card-text">I explored using jQuery and jQuery UI to create a code player utility, with resizable columns and a useful toolbar.</p>
+					<a class="btn btn-primary" href="/4-jquery/coder.html" role="button">View</a>
+                </div>
+				<footer class="card-footer">
+					<small class="tag text-muted">#HTML5</small><small class="tag text-muted">#CSS3</small><small class="tag text-muted">#JavaScript</small><small class="tag text-muted">#jQuery</small><small class="tag text-muted">#jQueryUI</small>
+				</footer>
+            </section>
+			<div class="w-100 d-none d-sm-block d-lg-none"></div>
+            <section id="AppLander" class="card bg-dark">
+                <img src="images/app-lander.jpg" class="card-img-top" alt="goPlasticFree App Landing Page">
+                <div class="card-header">App Landing Page</div>
+				<div class="card-img-overlay">
+                    <p class="card-text">I learned how to use Bootstrap to create a landing page for an imaginary new app</p>
+					<a class="btn btn-primary" href="/5-bootstrap/index.html" role="button">View</a>
+                </div>
+				<footer class="card-footer">
+					<small class="tag text-muted">#HTML5</small><small class="tag text-muted">#CSS3</small><small class="tag text-muted">#JavaScript</small><small class="tag text-muted">#Bootstrap4</small>
+				</footer>
+            </section>
+			<div class="w-100 d-none d-lg-block"></div>
+            <section id="WeatherAppPHP" class="card bg-dark">
+                <img src="images/phpweather.jpg" class="card-img-top" alt="Image of a PHP based Weather App">
+                <div class="card-header">A PHP weather app</div>
+				<div class="card-img-overlay">
+                    <p class="card-text">I used PHP to create a weather forecast page, which queries another site to get weather information on a given city.</p>
+					<a class="btn btn-primary" href="/6-php/index.php" role="button">View</a>
+                </div>
+				<footer class="card-footer">
+					<small class="tag text-muted">#HTML5</small><small class="tag text-muted">#CSS3</small><small class="tag text-muted">#JavaScript</small><small class="tag text-muted">#Bootstrap4</small><small class="tag text-muted">#PHP</small>
+				</footer>
+            </section>
+			<div class="w-100 d-none d-sm-block d-lg-none"></div>
+			<section id="WeatherAppAJAX" class="card bg-dark">
+                <img src="images/ajaxweather.jpg" class="card-img-top" alt="Weather App screenshot">
+                <div class="card-header">An AJAX weather app</div>
+				<div class="card-img-overlay">
+                    <p class="card-text">I explored using AJAX to query the Accuweather API to give auto-complete information as well as the upcoming forecast.</p>
+					<a class="btn btn-primary" href="/6-php/weather.html" role="button">View</a>
+                </div>
+				<footer class="card-footer">
+					<small class="tag text-muted">#HTML5</small><small class="tag text-muted">#CSS3</small><small class="tag text-muted">#JavaScript</small><small class="tag text-muted">#Bootstrap4</small><small class="tag text-muted">#AJAX</small>
+				</footer>
+            </section>
+            <section id="Diary" class="card bg-dark">
+                <img src="images/diary.jpg" class="card-img-top" alt="Secret Diary screenshot">
+                <div class="card-header">A 'secret' diary</div>
+				<div class="card-img-overlay">
+                    <p class="card-text">I combined my learnt skills to create this 'secret diary' based website, where users can sign up and leave messages.</p>
+					<a class="btn btn-primary" href="/7-sql/" role="button">View</a>
+                </div>
+				<footer class="card-footer">
+					<small class="tag text-muted">#HTML5</small><small class="tag text-muted">#CSS3</small><small class="tag text-muted">#JavaScript</small><small class="tag text-muted">#Bootstrap4</small><small class="tag text-muted">#PHP</small><small class="tag text-muted">#jQuery</small>
+				</footer>
+            </section>
+			<div class="w-100 d-none d-sm-block"></div>
+            <section id="Postcode" class="card bg-dark">
+                <img src="images/postcode.jpg" class="card-img-top" alt="Postcode Lookup App">
+                <div class="card-header">API-based Postcode Finder</div>
+				<div class="card-img-overlay">
+                    <p class="card-text">For this app, I made API calls to common providers to produce an autocomplete and postcode lookup app.</p>
+					<a class="btn btn-primary" href="/8-apis/" role="button">View</a>
+                </div>
+				<footer class="card-footer">
+					<small class="tag text-muted">#HTML5</small><small class="tag text-muted">#CSS3</small><small class="tag text-muted">#JavaScript</small><small class="tag text-muted">#Bootstrap4</small><small class="tag text-muted">#AJAX</small><small class="tag text-muted">#API</small>
+				</footer>
+            </section>
+			<section id="MeMail" class="card bg-dark">
+                <img src="images/memail.jpg" class="card-img-top" alt="Image of a PHP based Weather App">
+                <div class="card-header">App.JS Email Client</div>
+				<div class="card-img-overlay">
+                    <p class="card-text">I learnt how to use App.JS to create a mobile friendly email client which uses AJAX and PHP to send emails.</p>
+					<a class="btn btn-primary" href="/9-mobile/" role="button">View</a>
+                </div>
+				<footer class="card-footer">
+					<small class="tag text-muted">#HTML5</small><small class="tag text-muted">#CSS3</small><small class="tag text-muted">#JavaScript</small><small class="tag text-muted">#App.JS</small><small class="tag text-muted">#PHP</small><small class="tag text-muted">#AJAX</small>
+				</footer>
+            </section>
+			<div class="w-100 d-none d-sm-block d-lg-none"></div>
+            <section id="Empty" class="card card-empty d-none d-lg-block">
+                
+            </section>
+		</div>
+	</article>
+	<article id="Contact" class="container-fluid bg-dark text-light mt-5 pb-5">
+		<div class="container">
+			<h2>Contact Me</h2>
+			<p>Find out more about what I have been doing, the skills that I have developed and the projects that I am currently doing by contacting me.</p>
+			<form id="frmContact" class="needs-validation" novalidate>
+				<div class="form-row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="txtName">Name</label>
+							<input id="txtName" name="name" class="form-control" type="text" placeholder="Enter your name" required />
+							<div class="invalid-feedback">
+								Please enter your name - I need to know it so that I can reply.
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="txtEmail">Email</label>
+							<input id="txtEmail" name="email" class="form-control" type="email" placeholder="Enter your email address" required />
+							<div class="invalid-feedback">
+								Please enter your email address and make sure it's valid. I need to know it so I can reply
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="taMessage">Enter your message</label>
+					<textarea id="taMessage" name="message" class="form-control" placeholder="Enter a message" required></textarea>
+					<div class="invalid-feedback">
+						Please enter a message.
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Send Message</button>
+			</form>
+		</div>
+		
+		<div id="toastAlert" style="position:absolute;right:0px;bottom:0px;" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="10000">
+			<div class="toast-header">
+				<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">
+				
+			</div>
+		</div>
+		
+		<div id="toastStatus" style="position:absolute;right:0px;bottom:0px;" class="toast" role="status" aria-live="polite" aria-atomic="true" data-autohide="true" data-delay="500">
+			<div class="toast-header">
+				<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">
+				
+			</div>
+		</div>
+	</article>
+</body>
+</html>
