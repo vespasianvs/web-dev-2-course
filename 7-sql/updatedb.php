@@ -1,7 +1,9 @@
 <?php
 session_start();
 
-$dbLink = mysqli_connect("DB_HOST", "DB_NAME", "DB_PASSWORD", "DB_NAME");
+include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+
+$dbLink = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 		
 if (mysqli_error($dbLink)) die("Could not connect to the database");
 

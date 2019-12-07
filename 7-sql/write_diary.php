@@ -2,8 +2,10 @@
 	session_start();
 	
 	if(!isset($_SESSION["user"])) header("Location: index.php");
-  
-	$dbLink = mysqli_connect("DB_HOST", "DB_NAME", "DB_PASSWORD", "DB_NAME");
+	
+	include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+
+	$dbLink = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 		
 	if (mysqli_error($dbLink)) die("Could not connect to the database");
 	
@@ -61,13 +63,13 @@
 	}
 	</script>
 	
-	<title>My Secret Diary</title>
+	<title>My Notebook</title>
 	
 </head>
 <body class="text-light">
 <div class="container vw-100 vh-100 position-relative">
 	<header id="hdrWrite" class="row">
-		<div class="col-10">Enter your most secret thoughts - and I will store them for you!</div>
+		<div class="col-10">Enter your notes - and I will store them for you!</div>
 		<div class="col-2 text-right pr-4">
 			<form method="POST" action="index.php">
 				<input type="hidden" name="action" value="LOGOUT">
@@ -86,7 +88,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					Your most secret thoughts couldn't be saved to the database.
+					Your most notes couldn't be saved to the database.
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

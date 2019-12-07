@@ -6,7 +6,10 @@
 	$errorMsg = '';
 	
 	if (!empty($_POST) && isset($_POST["action"])) {
-		$dbLink = mysqli_connect("DB_HOST", "DB_NAME", "DB_PASSWORD", "DB_NAME");
+		
+		include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+
+		$dbLink = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 		
 		if (mysqli_error($dbLink)) die("Could not connect to the database");
 		
@@ -110,7 +113,7 @@
 	</script>
 	
 	
-	<title>My Secret Diary</title>
+	<title>My Notebook</title>
 	
 </head>
 <body>
@@ -119,7 +122,7 @@
 		<div id="divContent" class="row h-100 align-items-center">
 			<div class="col-md-2"></div>
 			<form id="frmLogin" method="POST" action="index.php" class="col-md-8 mx-auto needs-validation" novalidate>
-				<h1>My Secret Diary</h1>
+				<h1>My Notebook Login</h1>
 				<input type="hidden" name="action" value="LOGIN">
 				<div class="form-group">
 					<label for="txtEmail">Email</label>
@@ -144,7 +147,7 @@
 			?>	
 			</form>
 			<form id="frmSignUp" method="POST" action="index.php" class="col-md-8 mx-auto d-none needs-validation" novalidate>
-				<h1>My Secret Diary</h1>
+				<h1>My Notebook Sign Up</h1>
 				<input type="hidden" name="action" value="SIGNUP">
 				<div class="form-group">
 					<label for="txtNewEmail">Email</label>
@@ -169,7 +172,7 @@
 </div>
 <footer class="fixed-bottom text-light text-center">
 	<div class="small">This website uses cookies to keep you logged in. That's it...nothing else.</div>
-	<div class="small">Your secret thoughts are stored in plain text in a database. Be careful with what you disclose!</div>
+	<div class="small">Your notes are stored in plain text in a database. Be careful with what you disclose!</div>
 </footer>
 </body>
 </html>
